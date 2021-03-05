@@ -8,3 +8,10 @@
   grid-template-columns: 224px minmax(0px, 1fr);
   gap: 40px;
 }
+
+@media only screen and (max-width: 745px) {
+  .app {
+    display: flex;
+    flex-direction: column;
+  }
+}

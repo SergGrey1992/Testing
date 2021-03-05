@@ -1,12 +1,12 @@
 import React from 'react';
 import style from './App.module.css';
-import {TotalProduct} from "./Components/Total_product/Total_product";
-import {CardProduct} from "./Components/CardProduct/CardProduct";
+import {SettingProduct} from "./Components/SettingProduct/SettingProduct";
+import {CardProduct} from "./Components/CardsProduct/CardProduct";
 
 function App() {
 	return (
 		<div className={style.app}>
-			<TotalProduct/>
+			<SettingProduct />
 			<CardProduct/>
 		</div>
 	);

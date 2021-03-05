@@ -1,5 +1,4 @@
 .blockCards {
-    position: relative;
     display: grid;
     grid-template-columns: repeat(4, minmax(0px, 1fr));
     gap: 24px;
@@ -11,13 +10,19 @@
     }
 }
 @media only screen and (max-width: 1023px) {
-    .uCWSh {
+    .blockCards {
         grid-template-columns: repeat(2, minmax(0px, 1fr));
+    }
+}
+@media only screen and (max-width: 860px) {
+    .blockCards {
+        grid-template-columns: repeat(1, minmax(0px, 1fr));
     }
 }
 
 .bl {
     width: 100%;
+
 }
 .link {
     text-decoration: none;
@@ -35,7 +40,7 @@ a:visited {
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 1;
+    z-index: 5;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -77,7 +82,8 @@ a:visited {
 }
 
 .blockCard {
-    min-height: 400px;
+    position: relative;
+    min-height: 382px;
     display: flex;
     flex-direction: column;
     background: #FFFFFF;
@@ -100,6 +106,22 @@ a:visited {
     align-items: center;
     width: 100%;
     padding-top: 18px;
+}
+@media only screen and (max-width: 1400px) {
+    .footerCard {
+        display: flex;
+    }
+}
+@media only screen and (max-width: 1330px) {
+    .footerCard {
+        display: flex;
+        flex-direction: column;
+    }
+}
+@media only screen and (max-width: 860px) {
+    .footerCard {
+        display: grid;
+    }
 }
 .but {
     width: 106px;

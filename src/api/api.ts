@@ -61,7 +61,7 @@ export type responseMetaType = {
 	total: number
 }
 export type responseProductsType = {
-	category: responseProductsCategoryType
+	category: Array<responseProductsCategoryType>
 	condition: 5
 	discount_trade_in: string
 	id: number
@@ -73,7 +73,7 @@ export type responseProductsType = {
 	slug: string
 	title: string
 }
-type responseProductsCategoryType = {
+export type responseProductsCategoryType = {
 	id: number
 	title: string
 	slug: string
@@ -86,14 +86,16 @@ type responseProductsImageType<T = {x1: string, x2: string, webp_x1: string, web
 }
 
 export const fullApi = {
-	getBrands(page: number) {
+	getBrands(page: number, min?: number, max?: number) {
 		return instance.get<responseType>('/kamery', {
 			params: {
-				page
+				page,
+				'price[min]': min,
+				'price[max]': max
 			}
 		})
 	},
-	getProducts(page: number) {
-		return this.getBrands(page)
+	getProducts(page: number, min?: number, max?: number) {
+		return this.getBrands(page, min, max)
 	}
 }
