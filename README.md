@@ -42,22 +42,3 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
-
-# Скачать проект по ссылке git@github.com:SergGrey1992/Testing.git
-
-установить все зависимости командой
-
-### `yarn`
-
-## Старт приложения командой
-
-### `yarn start`
-
-Запущенный проект \
-Откроется на  [http://localhost:3000](http://localhost:3000)
-
-сделана верстка, адаптив, запросы на сервер, сделан фильтр по цене \
-не получилось сделать цвет для checkbox \
-
-Сделал за 25 часов ( примерно ) можно накинуть 2-3 часа
-
