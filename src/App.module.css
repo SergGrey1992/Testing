@@ -11,7 +11,8 @@
 
 @media only screen and (max-width: 745px) {
   .app {
-    display: flex;
-    flex-direction: column;
+    width: calc(100% - 20px);
+    grid-template-columns: minmax(0px, 1fr);
+    gap: 0;
   }
 }

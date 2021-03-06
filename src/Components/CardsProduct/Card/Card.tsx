@@ -10,10 +10,9 @@ type CardPropsType = {
 }
 export const Card: React.FC<CardPropsType> = ({products, isNew}) => {
 	return (
-		<div>
 			<li className={style.blockCard}>
 				<div className={style.bl}>
-					<a className={style.link} href="/"/>
+					<a className={style.link} href=""/>
 					{isNew &&
           <div className={style.new}>
               <div className={style.newT}>Новинка</div>
@@ -30,6 +29,5 @@ export const Card: React.FC<CardPropsType> = ({products, isNew}) => {
 					</div>
 				</div>
 			</li>
-		</div>
 	);
 };

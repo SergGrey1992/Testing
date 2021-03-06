@@ -2,8 +2,19 @@
     display: grid;
     grid-template-columns: repeat(4, minmax(0px, 1fr));
     gap: 24px;
-
 }
+.blockCard::after, .blockCard::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: calc(-40px);
+    display: block;
+    width: calc(100% + 80px);
+    height: 1px;
+    background: rgb(230, 230, 230);
+}
+
+
 @media only screen and (max-width: 1200px) {
     .blockCards {
         grid-template-columns: repeat(3, minmax(0px, 1fr));
@@ -19,12 +30,36 @@
         grid-template-columns: repeat(1, minmax(0px, 1fr));
     }
 }
+@media only screen and (max-width: 767px) {
+    .blockCards {
+        grid-template-columns: minmax(0px, 1fr);
+        gap: 0;
+    }
+}
+
+.blockCard > * {
+    height: 100%;
+}
 
 .bl {
     width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column
+}
 
+@media only screen and (max-width: 767px) {
+    .bl {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: minmax(124px, 1fr) minmax(0px, 1.6fr);
+        padding-top: 20px;
+        padding-bottom: 20px;
+
+    }
 }
 .link {
+    position: absolute;
     text-decoration: none;
     top: 0;
     left: 0;
@@ -47,6 +82,12 @@ a:visited {
     width: 100%;
     padding: 12px;
 }
+@media only screen and (max-width: 767px) {
+    .new {
+        top: 20px;
+        left: 0;
+    }
+}
 .newT {
     display: flex;
     -webkit-box-align: center;
@@ -68,9 +109,12 @@ a:visited {
 }
 .infoPriceBlock {
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    padding: 16px;
+    flex-direction: column;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    padding: 12px 16px 16px;
+    border-radius: 0 0 4px 4px;
+    border-top: none;
 }
 
 .price {
@@ -83,13 +127,7 @@ a:visited {
 
 .blockCard {
     position: relative;
-    min-height: 382px;
-    display: flex;
-    flex-direction: column;
-    background: #FFFFFF;
-    border: 1px solid #E6E6E6;
-    box-sizing: border-box;
-    border-radius: 4px;
+
 }
 
 .image {
@@ -121,6 +159,18 @@ a:visited {
 @media only screen and (max-width: 860px) {
     .footerCard {
         display: grid;
+        grid-template-columns: minmax(0px, max-content) 32px;
+        gap: 10px;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding-top: 18px;
+    }
+    .price {
+        margin-top: auto;
+    }
+    .infoPriceBlock {
+        padding: 0;
     }
 }
 .but {

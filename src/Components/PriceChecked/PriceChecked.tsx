@@ -33,7 +33,7 @@ export const PriceChecked: React.FC<PriceCheckedPropsType> = () => {
 	};
 	useEffect(() => {
 		dispatch(getCard(current_page, min, max))
-	}, [dispatch, current_page, min, max])
+	}, [dispatch, current_page])
 
 	const onDrop = () => {
 		dispatch(getCard(current_page, min, max))
