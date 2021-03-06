@@ -11,7 +11,6 @@ export const PriceSelection: React.FC<PriceSelectionPropsType> = ({min, max}) =>
 		<div className={style.wrapperSpan}>
 			<span>{min}</span>
 			<span>{max}</span>
-
 		</div>
 	)
 }
