@@ -21,7 +21,6 @@ export const Card: React.FC<CardPropsType> = ({products, isNew}) => {
 					<div className={style.infoPriceBlock}>
 						<h4 className={style.title}>{products.title}</h4>
 						<div className={style.price}>{products.price + "₽"}</div>
-						<div>123</div>
 						<div className={style.footerCard}>
 							<button className={style.but}>В корзину</button>
 							<img src={w} alt=""/>

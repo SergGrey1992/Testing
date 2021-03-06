@@ -2,6 +2,7 @@
     display: flex;
     border-radius: 4px;
     border: 1px solid #DBDBDB;
+    width: 220px;
 }
 .wrapperSpan span:first-child {
     border-right: 1px solid #DBDBDB
