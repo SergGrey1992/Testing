@@ -4,35 +4,49 @@ import {RootStoreType} from "../../Redux/store";
 import {responseFilterType} from "../../api/api";
 import {fetchBrands} from "../../Redux/Brands_reducer";
 import {Preloader} from "../../common/Preloader/Preloader";
+import style from "./CheckedBrands.module.css"
 
 export const CheckedBrands = () => {
 	const filtersBrands = useSelector<RootStoreType, Array<responseFilterType>>(state => state.brandsReducer.data.filters)
 	const appStatus = useSelector<RootStoreType, string>(state => state.appReducer.status)
 	const current_page = useSelector<RootStoreType, number>(state => state.brandsReducer.data.meta.current_page)
 	const dispatch = useDispatch();
-	const [x, setX] = useState(true)
- 	const mappedBrands = filtersBrands
-		.filter((f) =>  f.slug === 'brands')
-		.map(f=> f.items.map( (f, index) => x ? (index < 5 && <div key={f.value}><input type="checkbox"/> {f.title}</div>)
-			: <div key={f.value}><input type="checkbox"/> {f.title}</div>))
-
-
-
+	const [othersBrands, setOthersBrands] = useState(false)
+	const mappedBrands = filtersBrands
+		.filter((f) => f.slug === 'brands')
+		.map(f => f.items.map((f, index) => othersBrands
+			? <div key={f.value} className={style.titleBrand}>
+				<input type="checkbox"/>
+				<span className={style.titleBrand}>{f.title}</span>
+			</div>
+			: (index < 5 && <div key={f.value} className={style.titleBrand}>
+            <input type="checkbox" />
+            <span className={style.titleBrand}>{f.title}</span>
+        </div>)))
+	const isNew = filtersBrands.filter(f => f.title === 'Новинка').map(f => <div><input type={f.type}/> {f.title}</div>)
+	const isPromo = filtersBrands.filter(f => f.title === 'Акция').map(f => <div><input type={f.type}/> {f.title}</div>)
 	useEffect(() => {
 		if (current_page) {
 			dispatch(fetchBrands(current_page))
 		}
-
 	}, [dispatch, current_page])
-
 	if (appStatus === 'loading') {
 		return <Preloader/>
 	}
 	return (
 		<div>
+			<h3 className={style.title}>Бренд</h3>
 			{mappedBrands}
 			<div>
-				{x && <span><input type="checkbox" onChange={() => setX(!x)}/> Другие</span>}
+				{othersBrands
+					? <span><input type="checkbox" onChange={() => setOthersBrands(!othersBrands)}/> Другие</span>
+					: <span><input type="checkbox" onChange={() => setOthersBrands(!othersBrands)}/> Другие</span>
+				}
+
+			</div>
+			<div className={style.isNew}>
+				{isNew}
+				{isPromo}
 			</div>
 		</div>
 	)

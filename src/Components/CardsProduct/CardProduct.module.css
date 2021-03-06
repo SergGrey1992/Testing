@@ -3,17 +3,6 @@
     grid-template-columns: repeat(4, minmax(0px, 1fr));
     gap: 24px;
 }
-.blockCard::after, .blockCard::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: calc(-40px);
-    display: block;
-    width: calc(100% + 80px);
-    height: 1px;
-    background: rgb(230, 230, 230);
-}
-
 
 @media only screen and (max-width: 1200px) {
     .blockCards {
@@ -48,7 +37,7 @@
     flex-direction: column
 }
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 745px) {
     .bl {
         display: grid;
         gap: 16px;
@@ -127,10 +116,22 @@ a:visited {
 
 .blockCard {
     position: relative;
+}
+@media only screen and (max-width: 745px) {
+    .blockCard::after, .blockCard::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: calc(-40px);
+        display: block;
+        width: calc(100% + 80px);
+        height: 1px;
+        background: rgb(230, 230, 230);
+    }
 
 }
 
-.image {
+    .image {
     max-width:100%;
     height:auto;
 }

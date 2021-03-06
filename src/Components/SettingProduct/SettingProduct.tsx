@@ -13,7 +13,6 @@ export const SettingProduct: React.FC<SettingProductPropsType> = () => {
 			<TotalProduct/>
 			<Categories/>
 			<PriceChecked />
-			<div>Бренд</div>
 			<CheckedBrands/>
 		</div>
 	);
