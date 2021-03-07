@@ -5,12 +5,14 @@ import {useDispatch, useSelector} from "react-redux";
 import {RootStoreType} from "../../Redux/store";
 import {responseFilterType} from "../../api/api";
 import {getCard} from "../../Redux/card_reducer";
-import style from "./PriceChecked.module.css"
+import styled from "styled-components";
 
 type PriceCheckedPropsType = {
 
 }
-
+const Div = styled.div`
+  padding-bottom: 10px;
+`
 export const PriceChecked: React.FC<PriceCheckedPropsType> = () => {
 	const products = useSelector<RootStoreType, Array<responseFilterType>>(state => state.brandsReducer.data.filters)
 	const title = products.filter(p => p.title === 'Цена').map(p => <h3 key={p.title}>{p.title}, ₽</h3>)
@@ -42,7 +44,7 @@ export const PriceChecked: React.FC<PriceCheckedPropsType> = () => {
 
 	return (
 		<div >
-			<span className={style.title}>{title}</span>
+			<Div>{title}</Div>
 			<PriceSelection min={min} max={max}/>
 			<RangeSlider max={maxPrice} min={minPrice} value={value} onChange={handleChange} onDrop={onDrop}/>
 		</div>

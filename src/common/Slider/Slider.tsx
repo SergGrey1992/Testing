@@ -37,6 +37,7 @@ export const RangeSlider: React.FC<RangeSliderPropsType> = ({value, onChange, mi
 		<div className={classes.root}>
 			<GlobalCss/>
 			<Slider
+				onTouchEnd={onDrop}
 				onMouseUp={onDrop}
 				value={value}
 				min={min}

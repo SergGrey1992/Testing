@@ -23,8 +23,8 @@ export const CheckedBrands = () => {
             <input type="checkbox" />
             <span className={style.titleBrand}>{f.title}</span>
         </div>)))
-	const isNew = filtersBrands.filter(f => f.title === 'Новинка').map(f => <div><input type={f.type}/> {f.title}</div>)
-	const isPromo = filtersBrands.filter(f => f.title === 'Акция').map(f => <div><input type={f.type}/> {f.title}</div>)
+	const isNew = filtersBrands.filter(f => f.title === 'Новинка').map(f => <div key={f.slug}><input type={f.type}/> {f.title}</div>)
+	const isPromo = filtersBrands.filter(f => f.title === 'Акция').map(f => <div key={f.slug}><input type={f.type}/> {f.title}</div>)
 	useEffect(() => {
 		if (current_page) {
 			dispatch(fetchBrands(current_page))
