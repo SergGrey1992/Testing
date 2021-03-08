@@ -12,19 +12,24 @@ export const CheckedBrands = () => {
 	const current_page = useSelector<RootStoreType, number>(state => state.brandsReducer.data.meta.current_page)
 	const dispatch = useDispatch();
 	const [othersBrands, setOthersBrands] = useState(false)
+	const [checkedBrands, setCheckedBrands] = useState(false)
 	const mappedBrands = filtersBrands
 		.filter((f) => f.slug === 'brands')
 		.map(f => f.items.map((f, index) => othersBrands
 			? <div key={f.value} className={style.titleBrand}>
-				<input type="checkbox"/>
-				<span className={style.titleBrand}>{f.title}</span>
+				<input type="checkbox" checked={checkedBrands} id={f.title}
+							 onChange={() => setCheckedBrands(!checkedBrands)}/>
+				<label htmlFor={f.title}>{f.title}</label>
 			</div>
 			: (index < 5 && <div key={f.value} className={style.titleBrand}>
-            <input type="checkbox" />
-            <span className={style.titleBrand}>{f.title}</span>
+            <input type="checkbox" checked={checkedBrands} id={f.title}
+                   onChange={() => setCheckedBrands(!checkedBrands)}/>
+            <label htmlFor={f.title}>{f.title}</label>
         </div>)))
-	const isNew = filtersBrands.filter(f => f.title === 'Новинка').map(f => <div key={f.slug}><input type={f.type}/> {f.title}</div>)
-	const isPromo = filtersBrands.filter(f => f.title === 'Акция').map(f => <div key={f.slug}><input type={f.type}/> {f.title}</div>)
+	const isNew = filtersBrands.filter(f => f.title === 'Новинка').map(f => <div key={f.slug}>
+		<input type={f.type}/><label htmlFor={f.title}>{f.title}</label></div>)
+	const isPromo = filtersBrands.filter(f => f.title === 'Акция').map(f => <div key={f.slug}>
+		<input type={f.type}/><label htmlFor={f.title}>{f.title}</label></div>)
 	useEffect(() => {
 		if (current_page) {
 			dispatch(fetchBrands(current_page))
@@ -39,10 +44,19 @@ export const CheckedBrands = () => {
 			{mappedBrands}
 			<div>
 				{othersBrands
-					? <span><input type="checkbox" onChange={() => setOthersBrands(!othersBrands)}/> Другие</span>
-					: <span><input type="checkbox" onChange={() => setOthersBrands(!othersBrands)}/> Другие</span>
+					? <span><input type="checkbox"
+												 id={'other'}
+												 onChange={() => setOthersBrands(!othersBrands)}
+					/>
+												 <label htmlFor="other"> Другие</label>
+				</span>
+					: <span><input type="checkbox"
+												 id={'other'}
+												 onChange={() => setOthersBrands(!othersBrands)}
+					/>
+					<label htmlFor="other"> Другие</label>
+					</span>
 				}
-
 			</div>
 			<div className={style.isNew}>
 				{isNew}
