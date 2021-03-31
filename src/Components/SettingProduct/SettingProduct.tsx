@@ -7,6 +7,7 @@ import {Categories} from "../Categories/Categories";
 type SettingProductPropsType = {
 
 }
+
 export const SettingProduct: React.FC<SettingProductPropsType> = () => {
 	return (
 		<div>

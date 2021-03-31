@@ -29,13 +29,13 @@ const Ul = styled.ul`
 
 export const CardProduct = () => {
 	const products = useSelector<RootStoreType, Array<responseProductsType>>(state => state.cardReducer.products)
-	const current_page = useSelector<RootStoreType, number>(state => state.brandsReducer.data.meta.current_page)
-	const per_page = useSelector<RootStoreType, number>(state => state.brandsReducer.data.meta.per_page)
+	const currentPage = useSelector<RootStoreType, number>(state => state.brandsReducer.data.meta.current_page)
+	const perPage = useSelector<RootStoreType, number>(state => state.brandsReducer.data.meta.per_page)
 	const totalCount = useSelector<RootStoreType, number>(state => state.brandsReducer.data.meta.total)
 	const dispatch = useDispatch();
 
-	const setPageNumber = useCallback((current_page: number) => {
-			dispatch(setCurrentPage(current_page))
+	const setPageNumber = useCallback((currentPage: number) => {
+			dispatch(setCurrentPage(currentPage))
 	}, [dispatch])
 	return (
 		<div>
@@ -43,8 +43,8 @@ export const CardProduct = () => {
 				{ products.map( (products) => <Card key={products.id} products={products} isNew={products.is_new}/> ) }
 			</Ul>
 			<br/>
-			<Paginator currentPage={current_page}
-								 pageSize={per_page}
+			<Paginator currentPage={currentPage}
+								 pageSize={perPage}
 								 portionSize={10}
 								 totalCount={totalCount}
 								 onPageChanged={()=>{}}

@@ -9,7 +9,7 @@ import style from "./CheckedBrands.module.css"
 export const CheckedBrands = () => {
 	const filtersBrands = useSelector<RootStoreType, Array<responseFilterType>>(state => state.brandsReducer.data.filters)
 	const appStatus = useSelector<RootStoreType, string>(state => state.appReducer.status)
-	const current_page = useSelector<RootStoreType, number>(state => state.brandsReducer.data.meta.current_page)
+	const currentPage = useSelector<RootStoreType, number>(state => state.brandsReducer.data.meta.current_page)
 	const dispatch = useDispatch();
 	const [othersBrands, setOthersBrands] = useState(false)
 	const [checkedBrands, setCheckedBrands] = useState(false)
@@ -17,12 +17,12 @@ export const CheckedBrands = () => {
 		.filter((f) => f.slug === 'brands')
 		.map(f => f.items.map((f, index) => othersBrands
 			? <div key={f.value} className={style.titleBrand}>
-				<input type="checkbox" checked={checkedBrands} id={f.title}
+				<input type="checkbox" checked={f.main} id={f.title}
 							 onChange={() => setCheckedBrands(!checkedBrands)}/>
 				<label htmlFor={f.title}>{f.title}</label>
 			</div>
 			: (index < 5 && <div key={f.value} className={style.titleBrand}>
-            <input type="checkbox" checked={checkedBrands} id={f.title}
+            <input type="checkbox" checked={f.main} id={f.title}
                    onChange={() => setCheckedBrands(!checkedBrands)}/>
             <label htmlFor={f.title}>{f.title}</label>
         </div>)))
@@ -31,10 +31,10 @@ export const CheckedBrands = () => {
 	const isPromo = filtersBrands.filter(f => f.title === 'Акция').map(f => <div key={f.slug}>
 		<input type={f.type}/><label htmlFor={f.title}>{f.title}</label></div>)
 	useEffect(() => {
-		if (current_page) {
-			dispatch(fetchBrands(current_page))
+		if (currentPage) {
+			dispatch(fetchBrands(currentPage))
 		}
-	}, [dispatch, current_page])
+	}, [dispatch, currentPage])
 	if (appStatus === 'loading') {
 		return <Preloader/>
 	}
